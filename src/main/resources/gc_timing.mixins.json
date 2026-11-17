@@ -1,0 +1,10 @@
+{
+  "required": false,
+  "minVersion": "0.8",
+  "package": "com.misanthropy.gc_timing.mixin",
+  "plugin": "com.misanthropy.gc_timing.MixinPlugin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [],
+  "client": ["PoseStackMixin", "PoseInvoker"],
+  "server": []
+}
