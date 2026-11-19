@@ -20,6 +20,7 @@ public final class GcTiming {
     static final ForgeConfigSpec.BooleanValue FLUSH_SURVIVORS;
     static final ForgeConfigSpec.DoubleValue EDEN_FRACTION;
     static final ForgeConfigSpec.BooleanValue LOG;
+    static final ForgeConfigSpec.BooleanValue GROW_HEAP;
 
     static {
         ForgeConfigSpec.Builder b = new ForgeConfigSpec.Builder();
@@ -31,6 +32,8 @@ public final class GcTiming {
                 .defineInRange("edenFraction", 0.3, 0.1, 0.9);
         LOG = b.comment("Log every collection this mod runs.")
                 .define("log", false);
+        GROW_HEAP = b.comment("Grow the heap to its full size once on the title screen. Otherwise the JVM does it in one step in the middle of play, the first time the heap fills up, and the whole game freezes for 130 to 310 ms. Skipped when the PC has little free memory.")
+                .define("growHeapEarly", true);
         SPEC = b.build();
     }
 

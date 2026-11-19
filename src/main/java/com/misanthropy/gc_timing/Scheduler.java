@@ -20,6 +20,9 @@ public final class Scheduler {
         Minecraft mc = Minecraft.getInstance();
         boolean quiet = mc.screen != null || !mc.isWindowActive();
         Collector.unfelt = quiet;
+        if (mc.screen != null && mc.level == null && mc.getOverlay() == null && GcTiming.GROW_HEAP.get()) {
+            Grow.once();
+        }
         quietTicks = quiet ? quietTicks + 1 : 0;
         if (!enabled || quietTicks < 3 || Collector.busy() || !GcTiming.ENABLED.get()) {
             return;
